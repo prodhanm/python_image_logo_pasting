@@ -45,11 +45,11 @@ with Image.open(filename) as img:
     # is desired, to still maintain the clarity of the image.
 
     img_convert = img_resize.convert("L")
-    img_convert.show()
+    #img_convert.show()
     # The image is converted to greyscale, as "L" denotes
     # greyscale. Other indicators can be found on the Pillow
     # 10.0.0 documentation: 
     # https://pillow.readthedocs.io/en/stable/reference/Image.html
 
-    with open(logo) as logo:
+    with open(logo, "rb+") as img_logo:
         pass
