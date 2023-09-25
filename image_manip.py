@@ -38,5 +38,13 @@ with Image.open(filename) as img:
         (700,500)
     )
     img_resize.size
-    img_resize.show()
+    #img_resize.show()
     print(f"resized = {img_resize}")
+    # When the image is resized after some aspects of image
+    # maipulation, it is able to be resized to the size that
+    # is desired, to still maintain the clarity of the image.
+
+    img_convert = img_resize.convert("L")
+    img_convert.show()
+
+    #with open(logo) as logo:
