@@ -1,9 +1,9 @@
-from PIL import Image
+from PIL import Image, ImageFilter
 
 filename = "./image/image1.jpg"
 logo = "./image/logo.png"
-
-with Image.open(filename) as img:
+with Image.open(filename) as img, \
+    Image.open(logo) as logo_img:
     img.load()
     size = img.size
     print(f"size = {size}")
@@ -51,5 +51,19 @@ with Image.open(filename) as img:
     # 10.0.0 documentation: 
     # https://pillow.readthedocs.io/en/stable/reference/Image.html
 
+    logo_conv = logo_img.convert("L")
+    threshold = 50
+    logo_func = logo_conv.point(lambda x:255 if x > threshold else 0)
+    logo_resize = logo_func.resize(
+        (150,50)
+    )
+    logo_filter = logo_resize.filter(ImageFilter.CONTOUR)
+    logo_trans = logo_filter.point(lambda x: 0 if x ==255 else 255)
+    img_convert.paste(logo_trans, (150,300), logo_trans)
+    img_convert.show()
+    
+'''
     with open(logo, "rb+") as img_logo:
-        pass
+        #img_logo.load()
+        img_logo.show()
+'''
