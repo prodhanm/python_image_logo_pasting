@@ -188,4 +188,6 @@ launch.json
 *.indd
 *.raw
 
+/image/
+
 # End of https://www.toptal.com/developers/gitignore/api/python
