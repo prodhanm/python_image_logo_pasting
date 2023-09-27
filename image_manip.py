@@ -60,10 +60,20 @@ with Image.open(filename) as img, \
     logo_filter = logo_resize.filter(ImageFilter.CONTOUR)
     logo_trans = logo_filter.point(lambda x: 0 if x ==255 else 255)
     img_convert.paste(logo_trans, (150,300), logo_trans)
-    img_convert.show()
-    
-'''
-    with open(logo, "rb+") as img_logo:
-        #img_logo.load()
-        img_logo.show()
-'''
+    print(img_convert.size)
+    #img_convert.save("./image/image1_1.jpg")
+    '''
+    The operation from line 54 to 63, is the process with which
+    a secondary image in a .png format is overlaying on a .jpg 
+    image. The process allows for the logo image file to be 
+    greyscaled via the convert() and then with the use of the 
+    point(), we embed a lambda function to create an image of the 
+    .png file to paste it onto the .jpg image file. Prior to 
+    finalizing the .png file into the image, the .png image file uses
+    another lambda function to allow the signature that is to be 
+    pasted onto the .jpg image file to go from translucent image to
+    a filled image that will allow the image to stand out on the .jpg 
+    image. Once pasted, the final result is the picture contains 
+    a signature or a logo, as is the result from the commented out use 
+    of the save() to get the final product as image1_1.jpg."
+    '''
