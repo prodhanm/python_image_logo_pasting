@@ -80,7 +80,7 @@ with Image.open(filename) as img, \
 
     crop_img = ImageOps.crop(img_convert, border=5)
     #crop_img.show()
-    crop_img.save("./image/image1_2.jpg")
+    #crop_img.save("./image/image1_2.jpg")
     '''
     The ImageOps module use of the crop() reduces the border 
     around the image, as opposed to the crop() on the Image 
