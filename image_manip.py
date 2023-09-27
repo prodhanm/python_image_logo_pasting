@@ -1,4 +1,4 @@
-from PIL import Image, ImageFilter
+from PIL import Image, ImageFilter, ImageOps
 
 filename = "./image/image1.jpg"
 logo = "./image/logo.png"
@@ -77,3 +77,14 @@ with Image.open(filename) as img, \
     a signature or a logo, as is the result from the commented out use 
     of the save() to get the final product as image1_1.jpg."
     '''
+
+    crop_img = ImageOps.crop(img_convert, border=5)
+    crop_img.show()
+    '''
+    The ImageOps module use of the crop() reduces the border 
+    around the image, as opposed to the crop() on the Image 
+    module. The differnce is that the Image module crops the 
+    image to the size that is specified, whereas the ImageOps
+    module uses the crop() to shave the border of the image.
+    '''
+    
