@@ -11,5 +11,5 @@ def img_rename(dir_name):
                 fn.replace("image", "mufassa")
                 dir.os.join(fn,index,fext)
                 print(dir)
-    
+
 img_rename(dir_name)

@@ -61,7 +61,7 @@ with Image.open(filename) as img, \
     logo_trans = logo_filter.point(lambda x: 0 if x ==255 else 255)
     img_convert.paste(logo_trans, (150,300), logo_trans)
     print(img_convert.size)
-    #img_convert.save("./image/image1_1.jpg")
+    img_convert.save("./image/image1_1.jpg")
     '''
     The operation from line 54 to 63, is the process with which
     a secondary image in a .png format is overlaying on a .jpg 
