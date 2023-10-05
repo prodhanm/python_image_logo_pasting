@@ -1,3 +1,5 @@
+import os
+from pathlib import Path
 from PIL import Image, ImageFilter, ImageOps
 
 filename = "./image/image1.jpg"
@@ -50,7 +52,7 @@ with Image.open(filename) as img, \
     # greyscale. Other indicators can be found on the Pillow
     # 10.0.0 documentation: 
     # https://pillow.readthedocs.io/en/stable/reference/Image.html
-
+    '''
     logo_conv = logo_img.convert("L")
     threshold = 50
     logo_func = logo_conv.point(lambda x:255 if x > threshold else 0)
@@ -61,7 +63,9 @@ with Image.open(filename) as img, \
     logo_trans = logo_filter.point(lambda x: 0 if x ==255 else 255)
     img_convert.paste(logo_trans, (150,300), logo_trans)
     print(img_convert.size)
-    img_convert.save("./image/image1_1.jpg")
+    #img_convert.save("./image/image1_1.jpg")
+    '''
+    
     '''
     The operation from line 54 to 63, is the process with which
     a secondary image in a .png format is overlaying on a .jpg 
@@ -87,5 +91,17 @@ with Image.open(filename) as img, \
     module. The differnce is that the Image module crops the 
     image to the size that is specified, whereas the ImageOps
     module uses the crop() to shave the border of the image.
+    '''
+
+    dir_file = "./image/"
+    for dir in os.listdir(dir_file):
+        if dir.endswith("*.jpg"):
+            with Image.open(dir) as f:
+                fn, fext = os.path.splitext(dir)
+                fn_rep = fn.replace("image", "mufassa")
+                dir.save(f"{fn_rep}.jpg")
+    '''
+    The point of this for loop was supposed to rename the files
+    from image{i}(_{i}).jpg to mufassa{i}(_{i}).jpg. 
     '''
     
