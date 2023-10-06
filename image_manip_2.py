@@ -3,15 +3,6 @@ from pathlib import Path
 from PIL import Image, ImageFilter, ImageOps
 
 dir = Path(r"./image/")
-#logo = "./image/logo.png"
-#dir_file = "./image/"
-
-def file_rename():
-    p = Path(dir/"image4.JPG")
-    #if "*.JPG" in dir:
-    img_rename = Path("image4.jpg")
-    f = p.rename(img_rename)
-    return f
 
 def image_load(dir):
     logo = Image.open(dir/"logo.png")
