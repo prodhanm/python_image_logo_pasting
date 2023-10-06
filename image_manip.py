@@ -1,9 +1,10 @@
 import os
-from pathlib import Path
 from PIL import Image, ImageFilter, ImageOps
 
 filename = "./image/image1.jpg"
 logo = "./image/logo.png"
+dir_file = "./image/"
+
 with Image.open(filename) as img, \
     Image.open(logo) as logo_img:
     img.load()
@@ -65,7 +66,7 @@ with Image.open(filename) as img, \
     print(img_convert.size)
     #img_convert.save("./image/image1_1.jpg")
     '''
-    
+
     '''
     The operation from line 54 to 63, is the process with which
     a secondary image in a .png format is overlaying on a .jpg 
@@ -93,15 +94,37 @@ with Image.open(filename) as img, \
     module uses the crop() to shave the border of the image.
     '''
 
-    dir_file = "./image/"
+
+    '''
     for dir in os.listdir(dir_file):
         if dir.endswith("*.jpg"):
             with Image.open(dir) as f:
-                fn, fext = os.path.splitext(dir)
+                fn, fext = os.path.splitext(f)
                 fn_rep = fn.replace("image", "mufassa")
-                dir.save(f"{fn_rep}.jpg")
+            #os.rename(f"{fn}.jpg", f"{fn_rep}.jpg")
+            os.rename(fn, ".jpg", fn_rep, ".jpg")
+    '''
+    
     '''
     The point of this for loop was supposed to rename the files
     from image{i}(_{i}).jpg to mufassa{i}(_{i}).jpg. 
     '''
-    
+def img_paste():
+    logo_conv = logo_img.convert("L")
+    threshold = 50
+    logo_func = logo_conv.point(lambda x:255 if x > threshold else 0)
+    logo_resize = logo_func.resize(
+        (150,50)
+    )
+    logo_filter = logo_resize.filter(ImageFilter.CONTOUR)
+    logo_trans = logo_filter.point(lambda x: 0 if x ==255 else 255)
+    img_convert.paste(logo_trans, (150,300), logo_trans)
+    print(img_convert.size)
+
+for dir in os.listdir(dir_file):
+    if dir.endswith("*.jpg"):
+        with Image.open(dir) as file:
+            img_paste()
+            fn, fext = os.path.splitext(file)
+            fn_ren = fn.replace("image", "mufassa")
+            
