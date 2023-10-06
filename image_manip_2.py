@@ -1,14 +1,16 @@
 import os
+from pathlib import Path
 from PIL import Image, ImageFilter, ImageOps
 
-filename = "./image/image1.jpg"
-logo = "./image/logo.png"
-dir_file = "./image/"
+dir = Path(r"./image/")
+#logo = "./image/logo.png"
+#dir_file = "./image/"
 
 def image_load():
-    with Image.open(filename) as img, \
-        Image.open(logo) as logo_img:
+    for file in dir.glob("*.jpg"):
+        img = Image.open(file)
         img.load()
         img.show()
-
+            
 image_load()
+
