@@ -9,8 +9,18 @@ dir = Path(r"./image/")
 def image_load():
     for file in dir.glob("*.jpg"):
         img = Image.open(file)
-        img.load()
-        img.show()
-            
+        cropped_img = img.crop((0,0,2500,4000))
+        cropped_img.load()
+        cropped_img.show()
+
 image_load()
+
+'''
+def image_crop():
+    cropped_img = image_load().crop((0,0,2500,4000))
+    cropped_img.show()
+
+image_crop()
+'''
+
 
